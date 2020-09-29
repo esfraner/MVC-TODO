@@ -6,9 +6,9 @@
       <List v-for="todo in filteredTodos" :key="todo.id" :todo="todo" />
     </ul>
     <div>
-      <span>Remaining</span>
+      <span>Remaining {{remainingTodos}}</span>
       <span v-for="(val, key) in filters" :key="key" class="filters">
-        <button>{{ key }}</button>
+        <button @click="changeVisibility" :id="key">{{ key }}</button>
       </span>
     </div>
     <Footer />
@@ -48,6 +48,14 @@ export default {
 
     filteredTodos() {
       return filters[this.visibility](this.todos);
+    },
+    remainingTodos() {
+      return this.todos.filter((todo) => todo.active).length;
+    },
+  },
+  methods: {
+    changeVisibility: function ({ target }) {
+      this.visibility = target.id;
     },
   },
 };
