@@ -15,8 +15,10 @@ export default {
   methods: {
     addTodo(event) {
       let newTodoValue = event.target.value;
-      this.$store.commit("addTodo", newTodoValue);
-      event.target.value = "";
+      if (newTodoValue) {
+        this.$store.dispatch("addTodo", newTodoValue);
+        event.target.value = "";
+      }
     },
   },
 };

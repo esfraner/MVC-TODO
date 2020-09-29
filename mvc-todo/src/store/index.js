@@ -15,9 +15,21 @@ export default new Vuex.Store({
     },
     removeTodo(state, todo) {
       state.todos.splice(state.todos.indexOf(todo), 1)
+    },
+    clearComplete(state) {
+      state.todos = [];
     }
   },
   actions: {
+    addTodo({ commit }, todo) {
+      commit("addTodo", todo)
+    },
+    removeTodo({ commit }, todo) {
+      commit("removeTodo", todo)
+    },
+    clearComplete({ commit }) {
+      commit("clearComplete")
+    }
   },
   modules: {
   }
