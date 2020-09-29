@@ -1,7 +1,12 @@
 <template>
   <div id="app" class="container col-md-8">
     <Header class="container col-md-8" />
-    <NewTodo class="col-md-8 text-center" />
+    <div class="container">
+      <div class="col-md-8">
+        <ChangeStates class="col-md-2" :todos="todos" />
+        <NewTodo class="col-md-6 text-center" />
+      </div>
+    </div>
     <ul class="col-md-8 text-center">
       <List v-for="todo in filteredTodos" :key="todo.id" :todo="todo" />
     </ul>
@@ -34,6 +39,7 @@
 import Header from "./components/Header";
 import List from "./components/List";
 import NewTodo from "./components/NewTodo";
+import ChangeStates from "./components/ChangeStates";
 
 const filters = {
   all: (todos) => todos,
@@ -53,6 +59,7 @@ export default {
     Header,
     List,
     NewTodo,
+    ChangeStates,
   },
   computed: {
     todos() {
