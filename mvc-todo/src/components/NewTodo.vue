@@ -15,7 +15,7 @@ export default {
   methods: {
     addTodo(e) {
       const newTodoValue = e.target.value;
-      this.$store.dispatch("addTodo", newTodoValue);
+      this.$store.commit("addTodo", newTodoValue);
     },
   },
 };

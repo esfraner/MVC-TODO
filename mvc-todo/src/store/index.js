@@ -5,9 +5,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    todos: [{ id: 0, value: "test0", active: true },
-    { id: 1, value: "test1", active: false }],
-    idTodos: 1
+    todos: [],
+    idTodos: 0
   },
   mutations: {
     addTodo(state, newTodo) {
@@ -16,9 +15,6 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    addTodo({ commit }, newTodo) {
-      commit("addTodo", newTodo)
-    },
   },
   modules: {
   }
