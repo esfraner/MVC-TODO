@@ -18,6 +18,9 @@ export default new Vuex.Store({
     },
     clearComplete(state) {
       state.todos = [];
+    },
+    changeAllTodosStates(state) {
+      console.log(state)
     }
   },
   actions: {
@@ -29,6 +32,9 @@ export default new Vuex.Store({
     },
     clearComplete({ commit }) {
       commit("clearComplete")
+    },
+    changeAllTodosStates({ commit }) {
+      commit("changeAllTodosStates")
     }
   },
   modules: {

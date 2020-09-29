@@ -12,8 +12,9 @@ export default {
   props: ["todos"],
   methods: {
     changeAllTodosStates() {
+      this.$store.dispatch("changeAllTodosStates");
       console.log(
-        this.todos.map((todo) => ({ ...todo, active: !todo.active }))//send to store by using dispatch
+        this.todos.map((todo) => ({ ...todo, active: !todo.active })) //send to store by using dispatch
       );
     },
   },
