@@ -15,7 +15,7 @@ export default {
       this.todo.active = !this.todo.active;
     },
     removeTodo() {
-      this.$store.commit("removeTodo", this.todo);
+      this.$store.dispatch("removeTodo", this.todo);
     },
   },
 };
