@@ -13,9 +13,10 @@ export default {
   name: "NewTodo",
 
   methods: {
-    addTodo(e) {
-      const newTodoValue = e.target.value;
+    addTodo(event) {
+      let newTodoValue = event.target.value;
       this.$store.commit("addTodo", newTodoValue);
+      event.target.value = "";
     },
   },
 };
