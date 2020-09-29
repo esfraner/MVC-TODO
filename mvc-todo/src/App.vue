@@ -6,9 +6,12 @@
       <List v-for="todo in filteredTodos" :key="todo.id" :todo="todo" />
     </ul>
     <div>
-      <span>Remaining {{remainingTodos}}</span>
+      <span>Remaining {{ remainingTodos }}</span>
       <span v-for="(val, key) in filters" :key="key" class="filters">
         <button @click="changeVisibility" :id="key">{{ key }}</button>
+      </span>
+      <span>
+        <button @click="clearComplete">Clear Complete</button>
       </span>
     </div>
     <Footer />
@@ -55,6 +58,9 @@ export default {
   methods: {
     changeVisibility: function ({ target }) {
       this.visibility = target.id;
+    },
+    clearComplete: function () {
+      this.$store.dispatch("clearComplete");
     },
   },
 };
