@@ -45,7 +45,6 @@ export default {
     todos() {
       return this.$store.state.todos;
     },
-
     filteredTodos() {
       return filters[this.visibility](this.todos);
     },
