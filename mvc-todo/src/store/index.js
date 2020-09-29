@@ -13,6 +13,9 @@ export default new Vuex.Store({
       const todo = { id: ++state.idTodos, value: newTodo, active: true }
       state.todos = [...state.todos, todo];
     },
+    removeTodo(state, todo) {
+      state.todos.splice(state.todos.indexOf(todo), 1)
+    }
   },
   actions: {
   },

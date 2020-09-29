@@ -1,7 +1,8 @@
 <template>
   <li>
     <label>{{ todo.value }}</label>
-    <input type="checkbox" :checked="!todo.active" />
+    <input @click="changeActive" type="checkbox" :checked="!todo.active" />
+    <button @click="removeTodo" :id="todo.id">x</button>
   </li>
 </template>
 
@@ -9,6 +10,14 @@
 export default {
   name: "List",
   props: ["todo"],
+  methods: {
+    changeActive() {
+      this.todo.active = !this.todo.active;
+    },
+    removeTodo() {
+      this.$store.commit("removeTodo", this.todo);
+    },
+  },
 };
 </script>
 <style >
