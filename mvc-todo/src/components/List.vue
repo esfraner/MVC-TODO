@@ -2,7 +2,7 @@
   <li>
     <label>{{ todo.value }}</label>
     <input @click="changeActive" type="checkbox" :checked="!todo.active" />
-    <button @click="removeTodo" :id="todo.id">x</button>
+    <button @click="removeTodo" :id="todo.id" class="btn-remove">x</button>
   </li>
 </template>
 
@@ -23,5 +23,17 @@ export default {
 <style >
 li {
   list-style-type: none;
+  padding: 1%;
+}
+label{
+  margin-right: 1%;;
+}
+
+.btn-remove{
+  margin-left: 1%;
+    border-style: unset;
+    border-color: white;
+    background-color:white;
+    color:teal
 }
 </style>

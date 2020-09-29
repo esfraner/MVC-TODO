@@ -1,7 +1,7 @@
 <template>
   <div id="newTodo">
     <input
-      class="form-control col-md-6"
+      class="form-control"
       type="text"
       placeholder="What needs to be done?"
       @keyup.enter="addTodo"
