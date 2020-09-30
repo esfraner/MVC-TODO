@@ -9,13 +9,10 @@
 <script>
 export default {
   name: "ChangeStates",
-  props: ["todos"],
+  props: ["todos", "isSomeActiveTodo"],
   methods: {
     changeAllTodosStates() {
-      this.isSomeActiveTodo() ? this.changeToInactive() : this.changeToActive();
-    },
-    isSomeActiveTodo() {
-      return this.todos.some((todo) => todo.active);
+      this.isSomeActiveTodo ? this.changeToInactive() : this.changeToActive();
     },
     changeToActive() {
       this.$store.dispatch("changeTodosToActive");

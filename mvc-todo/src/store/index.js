@@ -8,6 +8,11 @@ export default new Vuex.Store({
     todos: [],
     visibility: "all"
   },
+  getters: {
+    isSomeActiveTodo(state) {
+      return state.todos.some((todo) => todo.active);
+    }
+  },
   mutations: {
     addTodo(state, newTodo) {
       const todo = { value: newTodo, active: true }

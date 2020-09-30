@@ -3,7 +3,11 @@
     <Header class="container col-md-8" />
     <div class="container">
       <div class="col-md-8">
-        <ChangeStates class="col-md-2" :todos="todos" />
+        <ChangeStates
+          class="col-md-2"
+          :todos="todos"
+          :isSomeActiveTodo="isSomeActiveTodo"
+        />
         <NewTodo class="col-md-6 text-center" />
       </div>
     </div>
@@ -11,8 +15,8 @@
       <List v-for="todo in filteredTodos" :key="todo.id" :todo="todo" />
     </ul>
     <div class="col-md-8 text-center">
-      <RemainingTodos :remainingTodos="remainingTodos" class="col-md-2"/>
-      <FiltersOption :filters="filters" class="col-md-10"/>
+      <RemainingTodos :remainingTodos="remainingTodos" class="col-md-2" />
+      <FiltersOption :filters="filters" class="col-md-10" />
     </div>
   </div>
 </template>
@@ -23,8 +27,7 @@ import List from "./components/List";
 import NewTodo from "./components/NewTodo";
 import ChangeStates from "./components/ChangeStates";
 import FiltersOption from "./components/FiltersOption";
-import RemainingTodos from './components/RemainingTodos.vue';
-
+import RemainingTodos from "./components/RemainingTodos.vue";
 
 const filters = {
   all: (todos) => todos,
@@ -45,11 +48,14 @@ export default {
     NewTodo,
     ChangeStates,
     FiltersOption,
-    RemainingTodos
+    RemainingTodos,
   },
   computed: {
     todos() {
       return this.$store.state.todos;
+    },
+    isSomeActiveTodo() {
+      return this.$store.getters.isSomeActiveTodo;
     },
     visibility() {
       return this.$store.state.visibility;
@@ -61,8 +67,7 @@ export default {
       return this.todos.filter((todo) => todo.active).length;
     },
   },
-  methods: {
-  },
+  methods: {},
 };
 </script>
 <style >
