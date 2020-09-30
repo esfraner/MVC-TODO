@@ -11,26 +11,8 @@
       <List v-for="todo in filteredTodos" :key="todo.id" :todo="todo" />
     </ul>
     <div class="col-md-8 text-center">
-      <span>Remaining {{ remainingTodos }}</span>
-      <span v-for="(val, key) in filters" :key="key" class="filters">
-        <button
-          @click="changeVisibility"
-          :id="key"
-          type="button"
-          class="btn btn-outline-secondary"
-        >
-          {{ key }}
-        </button>
-      </span>
-      <span>
-        <button
-          @click="clearComplete"
-          type="button"
-          class="btn btn-outline-success"
-        >
-          Clear Complete
-        </button>
-      </span>
+      <RemainingTodos :remainingTodos="remainingTodos" class="col-md-2"/>
+      <FiltersOption :filters="filters" class="col-md-10"/>
     </div>
   </div>
 </template>
@@ -40,6 +22,9 @@ import Header from "./components/Header";
 import List from "./components/List";
 import NewTodo from "./components/NewTodo";
 import ChangeStates from "./components/ChangeStates";
+import FiltersOption from "./components/FiltersOption";
+import RemainingTodos from './components/RemainingTodos.vue';
+
 
 const filters = {
   all: (todos) => todos,
@@ -51,7 +36,6 @@ export default {
   name: "App",
   data() {
     return {
-      visibility: "all",
       filters,
     };
   },
@@ -60,10 +44,15 @@ export default {
     List,
     NewTodo,
     ChangeStates,
+    FiltersOption,
+    RemainingTodos
   },
   computed: {
     todos() {
       return this.$store.state.todos;
+    },
+    visibility() {
+      return this.$store.state.visibility;
     },
     filteredTodos() {
       return filters[this.visibility](this.todos);
@@ -73,12 +62,6 @@ export default {
     },
   },
   methods: {
-    changeVisibility: function ({ target }) {
-      this.visibility = target.id;
-    },
-    clearComplete: function () {
-      this.$store.dispatch("clearComplete");
-    },
   },
 };
 </script>

@@ -6,7 +6,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     todos: [],
-    idTodos: 0
+    idTodos: 0,
+    visibility: "all"
   },
   mutations: {
     addTodo(state, newTodo) {
@@ -24,6 +25,9 @@ export default new Vuex.Store({
     },
     changeTodosToInactive(state) {
       state.todos = state.todos.map((todo) => ({ ...todo, active: false }))
+    },
+    changeVisibility(state, newVisibility) {
+      state.visibility = newVisibility;
     }
   },
   actions: {
@@ -41,7 +45,11 @@ export default new Vuex.Store({
     },
     changeTodosToInactive({ commit }) {
       commit("changeTodosToInactive")
+    },
+    changeVisibility({ commit }, newVisibility) {
+      commit("changeVisibility", newVisibility)
     }
+
   },
   modules: {
   }
