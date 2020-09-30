@@ -31,6 +31,11 @@
 export default {
   name: "List",
   props: ["todo"],
+  data() {
+    return {
+      currentInputValue: "",
+    };
+  },
   methods: {
     changeActive() {
       this.todo.active = !this.todo.active;
@@ -40,13 +45,18 @@ export default {
     },
     makeVisible(e) {
       e.target.disabled = false;
+      this.currentInputValue = e.target.value;
       e.target.focus();
     },
     makeDisabled(e) {
       e.target.disabled = true;
     },
     editTodo(e) {
-      this.todo.value = e.target.value;
+      if (e.target.value) {
+        this.todo.value = e.target.value;
+      } else {
+        e.target.value = this.currentInputValue;
+      }
       e.target.blur();
     },
   },
