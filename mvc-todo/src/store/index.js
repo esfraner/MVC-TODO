@@ -6,12 +6,11 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     todos: [],
-    idTodos: 0,
     visibility: "all"
   },
   mutations: {
     addTodo(state, newTodo) {
-      const todo = { id: ++state.idTodos, value: newTodo, active: true }
+      const todo = { value: newTodo, active: true }
       state.todos = [...state.todos, todo];
     },
     removeTodo(state, todo) {
@@ -51,6 +50,5 @@ export default new Vuex.Store({
     }
 
   },
-  modules: {
-  }
+  modules: {}
 })
