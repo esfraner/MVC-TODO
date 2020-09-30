@@ -6,7 +6,7 @@
     </span>
 
     <input @click="changeActive" type="checkbox" :checked="!todo.active" />
-    <button @click="removeTodo" :id="todo.id" class="btn-remove">x</button>
+    <button @click="removeTodo" class="btn-remove">x</button>
   </li>
 </template>
 
