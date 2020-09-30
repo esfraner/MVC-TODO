@@ -12,10 +12,16 @@ export default {
   props: ["todos"],
   methods: {
     changeAllTodosStates() {
-      this.$store.dispatch("changeAllTodosStates");
-      console.log(
-        this.todos.map((todo) => ({ ...todo, active: !todo.active })) //send to store by using dispatch
-      );
+      this.isSomeActiveTodo() ? this.changeToInactive() : this.changeToActive();
+    },
+    isSomeActiveTodo() {
+      return this.todos.some((todo) => todo.active);
+    },
+    changeToActive() {
+      this.$store.dispatch("changeTodosToActive");
+    },
+    changeToInactive() {
+      this.$store.dispatch("changeTodosToInactive");
     },
   },
 };

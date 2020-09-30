@@ -19,8 +19,11 @@ export default new Vuex.Store({
     clearComplete(state) {
       state.todos = [];
     },
-    changeAllTodosStates(state) {
-      console.log(state)
+    changeTodosToActive(state) {
+      state.todos = state.todos.map((todo) => ({ ...todo, active: true }))
+    },
+    changeTodosToInactive(state) {
+      state.todos = state.todos.map((todo) => ({ ...todo, active: false }))
     }
   },
   actions: {
@@ -33,8 +36,11 @@ export default new Vuex.Store({
     clearComplete({ commit }) {
       commit("clearComplete")
     },
-    changeAllTodosStates({ commit }) {
-      commit("changeAllTodosStates")
+    changeTodosToActive({ commit }) {
+      commit("changeTodosToActive")
+    },
+    changeTodosToInactive({ commit }) {
+      commit("changeTodosToInactive")
     }
   },
   modules: {
