@@ -12,6 +12,7 @@
     </span>
     <span>
       <button
+        v-if="isSomeCompleteTodo"
         @click="clearComplete"
         type="button"
         class="btn btn-outline-success"
@@ -25,7 +26,7 @@
 <script>
 export default {
   name: "FiltersOptions",
-  props: ["filters"],
+  props: ["filters", "isSomeCompleteTodo"],
   methods: {
     changeVisibility: function ({ target }) {
       const visibility = target.id;

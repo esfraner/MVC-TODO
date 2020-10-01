@@ -16,7 +16,11 @@
     </ul>
     <div class="col-md-8 text-center">
       <RemainingTodos :remainingTodos="remainingTodos" class="col-md-2" />
-      <FiltersOption :filters="filters" class="col-md-10" />
+      <FiltersOption
+        :filters="filters"
+        :isSomeCompleteTodo="isSomeCompleteTodo"
+        class="col-md-10"
+      />
     </div>
   </div>
 </template>
@@ -48,6 +52,9 @@ export default {
     },
     isSomeActiveTodo() {
       return this.$store.getters.isSomeActiveTodo;
+    },
+    isSomeCompleteTodo() {
+      return this.$store.getters.isSomeCompleteTodo;
     },
     visibility() {
       return this.$store.getters.visibility;
