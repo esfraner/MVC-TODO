@@ -38,7 +38,7 @@ export default {
   },
   methods: {
     changeActive() {
-      this.todo.active = !this.todo.active;
+      this.$store.dispatch("changeActive", this.todo);
     },
     removeTodo() {
       this.$store.dispatch("removeTodo", this.todo);
@@ -53,7 +53,11 @@ export default {
     },
     editTodo(e) {
       if (e.target.value) {
-        this.todo.value = e.target.value;
+        const paramsToEdit = {
+          selectedTodo: this.todo,
+          newValue: e.target.value,
+        };
+        this.$store.dispatch("editTodoValue", paramsToEdit);
       } else {
         e.target.value = this.currentInputValue;
       }
