@@ -6,6 +6,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     todos: [],
+    idTodos: 0,
     visibility: "all",
     filters: ["all", "active", "completed"]
   },
@@ -37,7 +38,7 @@ export default new Vuex.Store({
   },
   mutations: {
     addTodo(state, newTodo) {
-      const todo = { value: newTodo, active: true }
+      const todo = { id: ++state.idTodos, value: newTodo, active: true }
       state.todos = [...state.todos, todo];
     },
     removeTodo(state, todo) {
@@ -54,6 +55,14 @@ export default new Vuex.Store({
     },
     changeVisibility(state, newVisibility) {
       state.visibility = newVisibility;
+    },
+    changeActive(state, selectedTodo) {
+      let todoToChange = state.todos.find((todo) => todo.id == selectedTodo.id);
+      todoToChange.active = !todoToChange.active
+    },
+    editTodoValue(state, paramsToEdit) {
+      let todoToEdit = state.todos.find(todo => todo.id === paramsToEdit.selectedTodo.id);
+      todoToEdit.value = paramsToEdit.newValue;
     }
   },
   actions: {
@@ -74,6 +83,12 @@ export default new Vuex.Store({
     },
     changeVisibility({ commit }, newVisibility) {
       commit("changeVisibility", newVisibility)
+    },
+    changeActive({ commit }, selectedTodo) {
+      commit("changeActive", selectedTodo)
+    },
+    editTodoValue({ commit }, paramsToEdit) {
+      commit("editTodoValue", paramsToEdit)
     }
 
   },
