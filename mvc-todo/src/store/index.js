@@ -6,11 +6,33 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     todos: [],
-    visibility: "all"
+    visibility: "all",
+    filters: ["all", "active", "completed"]
   },
   getters: {
     isSomeActiveTodo(state) {
       return state.todos.some((todo) => todo.active);
+    },
+    todos(state) {
+      return state.todos;
+    },
+    remainingTodos(state) {
+      return state.todos.filter((todo) => todo.active).length;
+    },
+    visibility(state) {
+      return state.visibility;
+    },
+    all(state) {
+      return state.todos;
+    },
+    active(state) {
+      return state.todos.filter((todos) => todos.active)
+    },
+    completed(state) {
+      return state.todos.filter((todos) => !todos.active)
+    },
+    filters(state) {
+      return state.filters;
     }
   },
   mutations: {

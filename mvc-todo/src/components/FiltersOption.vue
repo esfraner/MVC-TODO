@@ -1,13 +1,13 @@
 <template>
   <div id="FiltersOptions">
-    <span v-for="(val, key) in filters" :key="key" class="filters">
+    <span v-for="filter in filters" :key="filter" class="filters">
       <button
         @click="changeVisibility"
-        :id="key"
+        :id="filter"
         type="button"
         class="btn btn-outline-secondary"
       >
-        {{ key }}
+        {{ filter }}
       </button>
     </span>
     <span>
@@ -29,7 +29,7 @@ export default {
   methods: {
     changeVisibility: function ({ target }) {
       const visibility = target.id;
-      this.$store.dispatch("changeVisibility",visibility);
+      this.$store.dispatch("changeVisibility", visibility);
     },
     clearComplete: function () {
       this.$store.dispatch("clearComplete");
