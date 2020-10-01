@@ -1,6 +1,6 @@
 <template>
-  <div id="RemainingTodos">
-    <span>Remaining {{ remainingTodos }}</span>
+  <div id="RemainingTodos" class="flex px-1">
+    <span class="text-sm px-1">Remaining: {{ remainingTodos }}</span>
   </div>
 </template>
 

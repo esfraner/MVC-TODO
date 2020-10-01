@@ -1,32 +1,24 @@
 <template>
-  <div id="app" class="container col-md-8">
-    <Header class="container col-md-8" />
-    <div class="container">
-      <div class="col-md-8">
-        <ChangeStates
-          class="col-md-2"
-          :todos="todos"
-          :isSomeActiveTodo="isSomeActiveTodo"
-        />
-        <NewTodo class="col-md-6 text-center" />
-      </div>
+  <div id="app" class="container">
+    <Header />
+    <div class="container inline-flex justify-center">
+      <ChangeStates :todos="todos" :isSomeActiveTodo="isSomeActiveTodo" />
+      <NewTodo />
     </div>
-    <ul class="col-md-8 text-center">
+    <ul class="container ">
       <List v-for="todo in filteredTodos" :key="todo.id" :todo="todo" />
     </ul>
-    <div class="col-md-8 text-center">
-      <RemainingTodos :remainingTodos="remainingTodos" class="col-md-2" />
+    <div class="container inline-flex justify-center">
+      <RemainingTodos :remainingTodos="remainingTodos" />
       <FiltersOption
         :filters="filters"
         :isSomeCompleteTodo="isSomeCompleteTodo"
-        class="col-md-10"
       />
     </div>
   </div>
 </template>
 
 <script>
-import './assets/styles/index.css';
 import Header from "./components/Header";
 import List from "./components/List";
 import NewTodo from "./components/NewTodo";

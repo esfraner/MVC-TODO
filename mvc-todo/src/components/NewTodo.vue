@@ -1,7 +1,7 @@
 <template>
-  <div id="newTodo">
+  <div id="newTodo" class="flex-inline">
     <input
-      class="form-control"
+      class="shadow border rounded py-2 px-3 focus:outline-none focus:shadow-outline"
       type="text"
       placeholder="What needs to be done?"
       @keyup.enter="addTodo"
