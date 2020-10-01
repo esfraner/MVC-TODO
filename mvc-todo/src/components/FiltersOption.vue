@@ -1,11 +1,11 @@
 <template>
-  <div id="FiltersOptions">
+  <div id="FiltersOptions" class="flex">
     <span v-for="filter in filters" :key="filter" class="filters">
       <button
         @click="changeVisibility"
         :id="filter"
         type="button"
-        class="btn btn-outline-secondary"
+        class="text-sm px-1 text-gray-500 hover:text-green-400"
       >
         {{ filter }}
       </button>
@@ -15,7 +15,7 @@
         v-if="isSomeCompleteTodo"
         @click="clearComplete"
         type="button"
-        class="btn btn-outline-success"
+        class="text-xs px-6 text-gray-500 hover:text-red-400"
       >
         Clear Complete
       </button>

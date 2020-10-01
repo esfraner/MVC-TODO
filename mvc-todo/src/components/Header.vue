@@ -1,6 +1,6 @@
 <template>
-  <div id="Header">
-    <h1 class="text-center">TODOS</h1>
+  <div id="Header" class="container text-center" >
+    <h1 class="text-center text-2xl py-3">TODOS</h1>
   </div>
 </template>
 
