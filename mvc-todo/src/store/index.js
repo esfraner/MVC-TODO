@@ -14,6 +14,9 @@ export default new Vuex.Store({
     isSomeActiveTodo(state) {
       return state.todos.some((todo) => todo.active);
     },
+    isSomeCompleteTodo(state) {
+      return state.todos.some((todo) => !todo.active);
+    },
     todos(state) {
       return state.todos;
     },
@@ -45,7 +48,7 @@ export default new Vuex.Store({
       state.todos.splice(state.todos.indexOf(todo), 1)
     },
     clearComplete(state) {
-      state.todos = [];
+      state.todos = state.todos.filter(todo => todo.active)
     },
     changeTodosToActive(state) {
       state.todos = state.todos.map((todo) => ({ ...todo, active: true }))
