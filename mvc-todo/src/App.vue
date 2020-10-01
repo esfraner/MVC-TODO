@@ -29,19 +29,8 @@ import ChangeStates from "./components/ChangeStates";
 import FiltersOption from "./components/FiltersOption";
 import RemainingTodos from "./components/RemainingTodos.vue";
 
-const filters = {
-  all: (todos) => todos,
-  active: (todos) => todos.filter((todo) => todo.active),
-  completed: (todos) => todos.filter((todo) => !todo.active),
-};
-
 export default {
   name: "App",
-  data() {
-    return {
-      filters,
-    };
-  },
   components: {
     Header,
     List,
@@ -52,19 +41,22 @@ export default {
   },
   computed: {
     todos() {
-      return this.$store.state.todos;
+      return this.$store.getters.todos;
+    },
+    filteredTodos() {
+      return this.$store.getters[this.visibility];
     },
     isSomeActiveTodo() {
       return this.$store.getters.isSomeActiveTodo;
     },
     visibility() {
-      return this.$store.state.visibility;
-    },
-    filteredTodos() {
-      return filters[this.visibility](this.todos);
+      return this.$store.getters.visibility;
     },
     remainingTodos() {
-      return this.todos.filter((todo) => todo.active).length;
+      return this.$store.getters.remainingTodos;
+    },
+    filters() {
+      return this.$store.getters.filters;
     },
   },
   methods: {},
