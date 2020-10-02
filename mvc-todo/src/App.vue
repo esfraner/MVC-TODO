@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import './assets/styles/index.css';
 import Header from "./components/Header";
 import List from "./components/List";
 import NewTodo from "./components/NewTodo";
