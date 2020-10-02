@@ -1,10 +1,10 @@
 <template>
   <div id="ChangeStates">
     <button
-      class="hover:text-red-500 py-2 px-2 rounded text-base"
+      class="hover:text-red-500 py-2 px-2 "
       @click="changeAllTodosStates"
     >
-      <i class="fa fa-trash"></i>
+      <a>Change</a>
     </button>
   </div>
 </template>
